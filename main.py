@@ -20,14 +20,13 @@ def extract_restart_requests(messages):
             restart_requests.append(text)
     return restart_requests
 
-response = client.conversations_history(channel='C07UM0ETK5L')
-if 'messages' in response:
-    restart_messages = extract_restart_requests(response['messages'])
-    for msg in restart_messages:
-        print(msg)
 
-
-
+if __name__ == "__main__":
+    response = client.conversations_history(channel='C07UM0ETK5L')
+    if 'messages' in response:
+        restart_messages = extract_restart_requests(response['messages'])
+        for msg in restart_messages:
+            print(msg)
 
 
 
