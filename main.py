@@ -75,13 +75,18 @@ def send_alert(channel_id, date, count):
         print(f"Error sending alert: {e}")
 
 def daily_check():
-    CHANNEL_ID = "C07V5MFH319"  # Replace with your Slack channel ID
+    CHANNEL_ID = "C07UM0ETK5L"  # Replace with your Slack channel ID
     DATE = datetime.now().strftime("%Y-%m-%d")  # Current date
     restarts_count = count_restarts(CHANNEL_ID, DATE)
-    print(f"Total restart requests on {DATE}: {restarts_count}")
+    daily_message = f"Total restart requests on {DATE}: {restarts_count}"
+    ALERT_CHANNEL_ID = 'C07V5MFH319'
+    response = client.chat_postMessage(channel=CHANNEL_ID, text=daily_message)
+    print(f"Alert sent: {response['ts']}")
     if restarts_count > 5:
-        send_alert(CHANNEL_ID, DATE, restarts_count)
+        send_alert(ALERT_CHANNEL_ID, DATE, restarts_count)
 
+
+a = ''
 if __name__ == "__main__":
     schedule.every().day.at("00:01").do(daily_check)
     print("Scheduler is running. Press Ctrl+C to exit.")
