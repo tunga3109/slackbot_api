@@ -56,7 +56,7 @@ def fetch_messages_for_day(channel_id, date):
         messages = response.get("messages", [])
     except Exception as e:
         print(f"Error fetching messages: {e}")
-    
+     
     return messages
 
 def count_restarts(channel_id, date):
@@ -85,7 +85,7 @@ def daily_check():
 
 
 if __name__ == "__main__":
-    schedule.every().day.at("18:57").do(daily_check)
+    schedule.every().day.at("19:59").do(daily_check)
     print("Scheduler is running. Press CMD+C to exit.")
     try:
         while True:
