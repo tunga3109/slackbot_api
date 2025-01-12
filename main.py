@@ -26,6 +26,7 @@ def extract_restart_requests(messages):
             restart_requests.append(text)
     return restart_requests
 
+
 def fetch_messages_for_day(channel_id, date):
     """
     Fetches all messages from Slack for a specific day (midnight to midnight).
