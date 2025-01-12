@@ -1,0 +1,9 @@
+2025-01-12 20:18:28 UTC - INFO - SlackRestartMonitor initialized.
+2025-01-12 20:18:28 UTC - INFO - Scheduler started. Press Ctrl+C to exit.
+2025-01-12 20:18:49 UTC - INFO - Scheduler stopped. Goodbye!
+2025-01-12T18:19:54.343964+00:00 - INFO - SlackRestartMonitor initialized.
+2025-01-12T18:19:54.344288+00:00 - INFO - Scheduler started. Press Ctrl+C to exit.
+2025-01-12T18:20:00.865124+00:00 - INFO - Fetched 12 messages for 2025-01-12.
+2025-01-12T18:20:00.865254+00:00 - INFO - Extracted 3 restart requests.
+2025-01-12T18:20:00.865290+00:00 - INFO - Counted 3 restart requests for 2025-01-12.
+2025-01-12T18:20:01.248097+00:00 - INFO - Daily message sent: 1736706001.200249
