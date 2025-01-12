@@ -85,7 +85,7 @@ def daily_check():
 
 
 if __name__ == "__main__":
-    schedule.every().day.at("19:59").do(daily_check)
+    schedule.every().day.at("00:21").do(daily_check)
     print("Scheduler is running. Press CMD+C to exit.")
     try:
         while True:
