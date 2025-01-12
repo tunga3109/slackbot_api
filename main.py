@@ -15,7 +15,6 @@ BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 client = WebClient(token=BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-MAX_LIMIT = 5
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
@@ -53,7 +52,6 @@ def fetch_messages_for_day(channel_id, date):
             channel=channel_id,
             oldest=oldest,
             latest=latest,
-            limit=MAX_LIMIT
         )
         messages = response.get("messages", [])
     except Exception as e:
@@ -79,17 +77,16 @@ def daily_check():
     DATE = datetime.now().strftime("%Y-%m-%d")  # Current date
     restarts_count = count_restarts(CHANNEL_ID, DATE)
     daily_message = f"Total restart requests on {DATE}: {restarts_count}"
-    ALERT_CHANNEL_ID = 'C07V5MFH319'
-    response = client.chat_postMessage(channel=CHANNEL_ID, text=daily_message)
+    ALERT_CHANNEL_ID = 'C088AHY4UAE'
+    response = client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=daily_message)
     print(f"Alert sent: {response['ts']}")
     if restarts_count > 5:
         send_alert(ALERT_CHANNEL_ID, DATE, restarts_count)
 
 
-a = ''
 if __name__ == "__main__":
-    schedule.every().day.at("00:01").do(daily_check)
-    print("Scheduler is running. Press Ctrl+C to exit.")
+    schedule.every().day.at("18:57").do(daily_check)
+    print("Scheduler is running. Press CMD+C to exit.")
     try:
         while True:
             schedule.run_pending()
