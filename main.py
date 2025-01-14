@@ -15,15 +15,23 @@ BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 client = WebClient(token=BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(ecn|mm|price-aggregator|driver|risk manager)\b", re.IGNORECASE)
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
     restart_requests = []
     for message in messages:
         text = message.get('text', '')  
-        if restart_keywords.search(text) and text.startswith(('##', '###')):
+        if restart_keywords.search(text) and text.startswith(('*##', '*###', '##', '###')):
             restart_requests.append(text)
     return restart_requests
+
+def service_search(restart_requests):
+    service_list = []
+    for restart_request in restart_requests:
+        if service_keywords.search(restart_request):
+            service_list.append(restart_request)
+    return service_list
 
 def fetch_messages_for_day(channel_id, date):
     """
