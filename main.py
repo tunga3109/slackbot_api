@@ -15,7 +15,7 @@ BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 client = WebClient(token=BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(ecn|mm|price-aggregator|driver|risk manager|manager)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager)\b", re.IGNORECASE)
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
@@ -25,7 +25,7 @@ def extract_restart_requests(messages):
         if restart_keywords.search(text) and text.startswith(('*##', '*###', '##', '###')) and service_keywords.search(text):
             restart_requests.append(text)
     return restart_requests
-
+    
 def fetch_messages_for_day(channel_id, date):
     """
     Fetches all messages from Slack for a specific day (midnight to midnight).
