@@ -1,3 +1,5 @@
 .env
 config.py
 slack_monitor.log
+notes.txt
+debug.py
