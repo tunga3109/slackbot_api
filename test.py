@@ -36,6 +36,7 @@ class SlackRestartMonitor:
         self.channel_id = channel_id
         self.alert_channel_id = alert_channel_id
         self.restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
+        self.service_keywords = re.compile(r"\b(ecn|mm|price-aggregator|driver|risk manager|manager)\b", re.IGNORECASE)
         logging.info("SlackRestartMonitor initialized.")
 
     def extract_restart_requests(self, messages):
@@ -43,7 +44,7 @@ class SlackRestartMonitor:
         restart_requests = []
         for message in messages:
             text = message.get('text', '')
-            if self.restart_keywords.search(text) and text.startswith(('##', '###')):
+            if self.restart_keywords.search(text) and text.startswith(('##', '###')) and self.service_keywords.search(text):
                 restart_requests.append(text)
         logging.info(f"Extracted {len(restart_requests)} restart requests.")
         return restart_requests
