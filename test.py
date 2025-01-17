@@ -44,7 +44,7 @@ class SlackRestartMonitor:
         restart_requests = []
         for message in messages:
             text = message.get('text', '')
-            if self.restart_keywords.search(text) and text.startswith(('##', '###')) and self.service_keywords.search(text):
+            if self.restart_keywords.search(text) and text.startswith(('##', '###', '*##', '*###')) and self.service_keywords.search(text):
                 restart_requests.append(text)
         logging.info(f"Extracted {len(restart_requests)} restart requests.")
         return restart_requests
@@ -57,7 +57,7 @@ class SlackRestartMonitor:
             start_time = datetime.strptime(date, "%Y-%m-%d").replace(
                 hour=0, minute=0, second=0, microsecond=0
             )
-            end_time = start_time - timedelta(days=1)
+            end_time = start_time + timedelta(days=1)
 
             # Convert to UNIX timestamps
             oldest = start_time.timestamp()
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     monitor = SlackRestartMonitor(BOT_TOKEN, CHANNEL_ID, ALERT_CHANNEL_ID)
 
     # Schedule daily check
-    schedule.every().day.at("00:01").do(monitor.daily_check)
+    schedule.every().day.at("11:42").do(monitor.daily_check)
     logging.info("Scheduler started. Press Ctrl+C to exit.")
 
     # Run the scheduler
