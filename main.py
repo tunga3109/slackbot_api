@@ -60,6 +60,24 @@ def fetch_messages_for_day(channel_id, date):
      
     return messages
 
+def extract_services_names(restart_requests_list):
+    service_dict = {}
+    
+    for request in restart_requests_list:
+        match = service_keywords.search(request)
+        if not match:
+            continue
+        
+        service_name = match.group().replace("*", " ")
+        details_pattern = re.compile(fr"{re.escape(match.group())}:\s*(.+?)\n", re.IGNORECASE)
+        result = details_pattern.search(request)
+        
+        if result:
+            details = result.group(1).replace("*", "").replace("and", "").strip()
+            service_dict[service_name] = service_dict.get(service_name, "") + details
+            
+    return service_dict
+
 def count_restarts(channel_id, date):
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(messages)
@@ -74,12 +92,18 @@ def send_alert(channel_id, date, count):
         print(f"Error sending alert: {e}")
 
 def daily_check():
+    import json
     CHANNEL_ID = "C07UM0ETK5L"  # Replace with your Slack channel ID
     DATE = datetime.now().strftime("%Y-%m-%d")  # Current date
+    messages = fetch_messages_for_day(CHANNEL_ID, DATE)
+    restart_requests = extract_restart_requests(messages)
+    services_names = extract_services_names(restart_requests)
+
     restarts_count = count_restarts(CHANNEL_ID, DATE)
     daily_message = f"Total restart requests on {DATE}: {restarts_count}"
     ALERT_CHANNEL_ID = 'C088AHY4UAE'
     response = client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=daily_message)
+    service_response =  client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=json.dumps(services_names, indent=4))
     print(f"Alert sent: {response['ts']}")
     if restarts_count > 5:
         send_alert(ALERT_CHANNEL_ID, DATE, restarts_count)
