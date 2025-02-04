@@ -2,128 +2,124 @@ import os
 import re
 import schedule
 import time
-import logging
-from datetime import datetime, timedelta, timezone
+import json
+from datetime import datetime, timedelta
 from slack_sdk import WebClient
 from dotenv import load_dotenv
+from abc import ABC, abstractmethod
 
 # Load environment variables
 load_dotenv()
+BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 
-class UTCFormatter(logging.Formatter):
-    converter = time.gmtime  # Use UTC time for log timestamps
-    def formatTime(self, record, datefmt=None):
-        dt = datetime.fromtimestamp(record.created, tz=timezone.utc)
-        if datefmt:
-            return dt.strftime(datefmt)
-        return dt.isoformat()
+# Slack Client
+class SlackService(ABC):
+    @abstractmethod
+    def fetch_messages(self, channel_id: str, date: str):
+        pass
+    
+    @abstractmethod
+    def send_message(self, channel_id: str, text: str):
+        pass
 
-# Configure logging
-logging.basicConfig(
-    filename="slack_monitor.log",  # Log file name
-    level=logging.INFO,  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
-    format="%(asctime)s - %(levelname)s - %(message)s",  # Log format
-    datefmt="%Y-%m-%d %H:%M:%S UTC"  # UTC timestamp format
-)
-
-# Update logger to use UTCFormatter
-for handler in logging.getLogger().handlers:
-    handler.setFormatter(UTCFormatter("%(asctime)s - %(levelname)s - %(message)s"))
-
-class SlackRestartMonitor:
-    def __init__(self, bot_token, channel_id, alert_channel_id):
+class SlackAPI(SlackService):
+    def __init__(self, bot_token: str):
         self.client = WebClient(token=bot_token)
-        self.channel_id = channel_id
-        self.alert_channel_id = alert_channel_id
-        self.restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-        self.service_keywords = re.compile(r"\b(ecn|mm|price-aggregator|driver|risk manager|manager)\b", re.IGNORECASE)
-        logging.info("SlackRestartMonitor initialized.")
-
-    def extract_restart_requests(self, messages):
-        """Extracts messages related to restarts."""
-        restart_requests = []
-        for message in messages:
-            text = message.get('text', '')
-            if self.restart_keywords.search(text) and text.startswith(('##', '###', '*##', '*###')) and self.service_keywords.search(text):
-                restart_requests.append(text)
-        logging.info(f"Extracted {len(restart_requests)} restart requests.")
-        return restart_requests
-
-    def fetch_messages_for_day(self, date):
-        """Fetches all messages for a specific day (midnight to midnight)."""
+    
+    def fetch_messages(self, channel_id: str, date: str):
         messages = []
         try:
-            # Calculate time range
-            start_time = datetime.strptime(date, "%Y-%m-%d").replace(
-                hour=0, minute=0, second=0, microsecond=0
-            )
+            start_time = datetime.strptime(date, "%Y-%m-%d").replace(hour=0, minute=0, second=0, microsecond=0)
             end_time = start_time + timedelta(days=1)
-
-            # Convert to UNIX timestamps
-            oldest = start_time.timestamp()
-            latest = end_time.timestamp()
-
-            # Fetch messages
             response = self.client.conversations_history(
-                channel=self.channel_id, oldest=oldest, latest=latest
+                channel=channel_id, oldest=start_time.timestamp(), latest=end_time.timestamp()
             )
             messages = response.get("messages", [])
-            logging.info(f"Fetched {len(messages)} messages for {date}.")
         except Exception as e:
-            logging.error(f"Error fetching messages: {e}")
+            print(f"Error fetching messages: {e}")
         return messages
+    
+    def send_message(self, channel_id: str, text: str):
+        try:
+            response = self.client.chat_postMessage(channel=channel_id, text=text)
+            print(f"Message sent: {response['ts']}")
+        except Exception as e:
+            print(f"Error sending message: {e}")
+
+# Restart Monitor Class
+class RestartMonitor:
+    restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
+    service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager)\b", re.IGNORECASE)
+    
+    def __init__(self, slack_service: SlackService, channel_id: str, alert_channel_id: str):
+        self.slack_service = slack_service
+        self.channel_id = channel_id
+        self.alert_channel_id = alert_channel_id
+
+    def extract_restart_requests(self, messages):
+        return [msg.get('text', '') for msg in messages if 
+                self.restart_keywords.search(msg.get('text', '')) and
+                msg.get('text', '').startswith(('*##', '*###', '##', '###')) and
+                self.service_keywords.search(msg.get('text', ''))]
+
+    def extract_services_names(self, restart_requests_list):
+        service_dict = {}
+        for request in restart_requests_list:
+            match = self.service_keywords.search(request)
+            if not match:
+                continue
+            service_name = match.group().replace("*", " ")
+            details_pattern = re.compile(fr"{re.escape(match.group())}:\s*(.+?)\n", re.IGNORECASE)
+            result = details_pattern.search(request)
+            if result:
+                details = result.group(1).replace("*", "").replace("and", "").strip()
+                service_dict[service_name] = service_dict.get(service_name, "") + details
+        return service_dict
 
     def count_restarts(self, date):
-        """Counts the number of restart-related messages for a given date."""
-        messages = self.fetch_messages_for_day(date)
+        messages = self.slack_service.fetch_messages(self.channel_id, date)
         restart_requests = self.extract_restart_requests(messages)
-        logging.info(f"Counted {len(restart_requests)} restart requests for {date}.")
         return len(restart_requests)
 
     def send_alert(self, date, count):
-        """Sends an alert if the number of restart requests exceeds the threshold."""
-        try:
-            alert_message = f"Alert: On {date}, the number of restart requests has reached {count}."
-            response = self.client.chat_postMessage(channel=self.alert_channel_id, text=alert_message)
-            logging.info(f"Alert sent: {response['ts']}")
-        except Exception as e:
-            logging.error(f"Error sending alert: {e}")
-
+        alert_message = f"Alert: On {date}, the number of restart requests has reached {count}."
+        self.slack_service.send_message(self.alert_channel_id, alert_message)
+    
     def daily_check(self):
-        """Performs the daily check for restart requests."""
         date = datetime.now().strftime("%Y-%m-%d")
+        messages = self.slack_service.fetch_messages(self.channel_id, date)
+        restart_requests = self.extract_restart_requests(messages)
+        services_names = self.extract_services_names(restart_requests)
         restarts_count = self.count_restarts(date)
-
-        # Send daily report
-        daily_message = f"Total restart requests on {date}: {restarts_count}"
-        try:
-            response = self.client.chat_postMessage(channel=self.alert_channel_id, text=daily_message)
-            logging.info(f"Daily message sent: {response['ts']}")
-        except Exception as e:
-            logging.error(f"Error sending daily message: {e}")
-
-        # Send alert if necessary
+        self.slack_service.send_message(self.alert_channel_id, f"Total restart requests on {date}: {restarts_count}")
+        self.slack_service.send_message(self.alert_channel_id, json.dumps(services_names, indent=4))
         if restarts_count > 5:
             self.send_alert(date, restarts_count)
 
+# Scheduler Class
+class MonitorScheduler:
+    def __init__(self, monitor: RestartMonitor, check_time: str):
+        self.monitor = monitor
+        self.check_time = check_time
+        schedule.every().day.at(self.check_time).do(self.monitor.daily_check)
+        print("Scheduler initialized.")
+
+    def start(self):
+        print("Scheduler is running. Press CMD+C to exit.")
+        try:
+            while True:
+                schedule.run_pending()
+                time.sleep(1)
+        except KeyboardInterrupt:
+            print("\nScheduler stopped. Goodbye!")
+
+a = ''
 
 if __name__ == "__main__":
-    # Environment variables
-    BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
-    CHANNEL_ID = "C07UM0ETK5L"  # Replace with your Slack channel ID
-    ALERT_CHANNEL_ID = "C088AHY4UAE"  # Replace with your alert channel ID
+    CHANNEL_ID = "C07UM0ETK5L"
+    ALERT_CHANNEL_ID = "C088AHY4UAE"
+    slack_service = SlackAPI(BOT_TOKEN)
+    monitor = RestartMonitor(slack_service, CHANNEL_ID, ALERT_CHANNEL_ID)
+    scheduler = MonitorScheduler(monitor, "17:00")
+    scheduler.start()
 
-    # Create instance of SlackRestartMonitor
-    monitor = SlackRestartMonitor(BOT_TOKEN, CHANNEL_ID, ALERT_CHANNEL_ID)
-
-    # Schedule daily check
-    schedule.every().day.at("11:42").do(monitor.daily_check)
-    logging.info("Scheduler started. Press Ctrl+C to exit.")
-
-    # Run the scheduler
-    try:
-        while True:
-            schedule.run_pending()
-            time.sleep(1)
-    except KeyboardInterrupt:
-        logging.info("Scheduler stopped. Goodbye!")
