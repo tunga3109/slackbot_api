@@ -15,7 +15,7 @@ BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 client = WebClient(token=BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
@@ -89,9 +89,10 @@ def count_restarts(channel_id, date):
     restart_requests = extract_restart_requests(messages)
     services_names = extract_services_names(restart_requests)
     for key in services_names:
-        restart_num += len(services_names[key])
         if key == 'ecn/mm':
-            restart_num += 2
+            restart_num += len(services_names[key]) * 2
+        else:
+            restart_num += len(services_names[key])
     return restart_num
     
 def send_alert(channel_id, date, count):
