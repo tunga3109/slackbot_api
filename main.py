@@ -62,27 +62,38 @@ def fetch_messages_for_day(channel_id, date):
 
 def extract_services_names(restart_requests_list):
     service_dict = {}
-    
+
     for request in restart_requests_list:
         match = service_keywords.search(request)
         if not match:
             continue
-        
-        service_name = match.group().replace("*", " ")
-        details_pattern = re.compile(fr"{re.escape(match.group())}:\s*(.+?)\n", re.IGNORECASE)
+
+        service_name = match.group()
+        details_pattern = re.compile(fr"{re.escape(service_name)}:\s*(.+?)(?:\n|$)", re.IGNORECASE)
         result = details_pattern.search(request)
-        
+
         if result:
-            details = result.group(1).replace("*", "").replace("and", "").strip()
-            service_dict[service_name] = service_dict.get(service_name, "") + details
-            
+            # Preserve the exact spacing from the input
+            details = result.group(1).replace('*', '').replace('and', ',')  
+            service_dict[service_name] = service_dict.get(service_name, "") + details + ","
+
+    # Remove trailing commas
+    for key in service_dict:
+        service_dict[key] = [item.strip() for item in service_dict[key].split(',') if item]
+
     return service_dict
 
 def count_restarts(channel_id, date):
+    restart_num = 0
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(messages)
-    return len(restart_requests)
-
+    services_names = extract_services_names(restart_requests)
+    for key in services_names:
+        restart_num += len(services_names[key])
+        if key == 'ecn/mm' or "REF" in services_names:
+            restart_num += 2
+    return restart_num
+    
 def send_alert(channel_id, date, count):
     try:
         alert_message = f"Alert: On {date}, the number of restart requests has reached {count}."
@@ -103,9 +114,19 @@ def daily_check():
     daily_message = f"Total restart requests on {DATE}: {restarts_count}"
     ALERT_CHANNEL_ID = 'C088AHY4UAE'
     response = client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=daily_message)
-    service_response =  client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=json.dumps(services_names, indent=4))
+    message_about_services = {json.dumps(services_names, indent=4)}
+    code_block_res = [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": f"```{message_about_services}```"
+                }
+            }
+        ]
+    client.chat_postMessage(channel=ALERT_CHANNEL_ID, blocks=code_block_res, text='Restart is coming soon')
     print(f"Alert sent: {response['ts']}")
-    if restarts_count > 5:
+    if restarts_count > 20:
         send_alert(ALERT_CHANNEL_ID, DATE, restarts_count)
 
 
