@@ -15,7 +15,7 @@ BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 client = WebClient(token=BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager)\b", re.IGNORECASE)
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
@@ -114,7 +114,7 @@ def daily_check():
     daily_message = f"Total restart requests on {DATE}: {restarts_count}"
     ALERT_CHANNEL_ID = 'C088AHY4UAE'
     response = client.chat_postMessage(channel=ALERT_CHANNEL_ID, text=daily_message)
-    message_about_services = {json.dumps(services_names, indent=4)}
+    message_about_services = json.dumps(services_names, indent=4)
     code_block_res = [
             {
                 "type": "section",
