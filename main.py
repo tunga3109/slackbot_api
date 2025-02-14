@@ -90,7 +90,7 @@ def count_restarts(channel_id, date):
     services_names = extract_services_names(restart_requests)
     for key in services_names:
         restart_num += len(services_names[key])
-        if key == 'ecn/mm' or "REF" in services_names:
+        if key == 'ecn/mm':
             restart_num += 2
     return restart_num
     
