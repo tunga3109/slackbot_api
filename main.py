@@ -6,13 +6,9 @@ import time
 from datetime import datetime, timedelta
 
 from slack_sdk import WebClient
-from dotenv import load_dotenv
+from config import SLACK_BOT_TOKEN
 
-load_dotenv()
-
-BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
-
-client = WebClient(token=BOT_TOKEN)
+client = WebClient(token=SLACK_BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
 service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
@@ -83,18 +79,22 @@ def extract_services_names(restart_requests_list):
 
 def count_restarts(channel_id, date):
     restart_num = 0
+    ALERT_CHANNEL_ID = 'C08DFU192MT'
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(messages)
     services_names = extract_services_names(restart_requests)
     for key in services_names:
         restart_num += len(services_names[key]) * (2 if key == 'ecn/mm' else 1)
         restart_num += sum(1 for service in services_names[key] if 'REF' in service)
+    
+    if restart_num > 20:
+        send_alert(ALERT_CHANNEL_ID, restart_num)
 
     return restart_num
     
 def send_alert(channel_id, count):
     try:
-        alert_message = f"Alert limit exceeded: The number of restart requests has reached {count}."
+        alert_message = f" :red_circle: Alert limit exceeded: The number of restart requests has reached {count}. :red_circle:"
         response = client.chat_postMessage(channel=channel_id, text=alert_message)
         print(f"Alert sent: {response['ts']}")
     except Exception as e:
@@ -104,7 +104,6 @@ def daily_check():
     import json
     CHANNEL_ID = "C07UM0ETK5L"  
     NOTIFICATION_CHANNEL_ID = 'C088AHY4UAE'
-    ALERT_CHANNEL_ID = 'C08DFU192MT'
     DATE = datetime.now().strftime("%Y-%m-%d") 
 
     messages = fetch_messages_for_day(CHANNEL_ID, DATE)
@@ -112,7 +111,7 @@ def daily_check():
     services_names = extract_services_names(restart_requests)
     restarts_count = count_restarts(CHANNEL_ID, DATE)
 
-    daily_message = f"Total restart requests on {DATE}: {restarts_count}"
+    daily_message = f"Total restart requests on {DATE}: {restarts_count} :alien:"
     response = client.chat_postMessage(channel=NOTIFICATION_CHANNEL_ID, text=daily_message)
     message_about_services = json.dumps(services_names, indent=4)
     code_block_res = [
@@ -124,14 +123,16 @@ def daily_check():
                 }
             }
         ]
-    client.chat_postMessage(channel=NOTIFICATION_CHANNEL_ID, blocks=code_block_res, text='Restart is coming soon')
+    client.chat_postMessage(channel=NOTIFICATION_CHANNEL_ID, blocks=code_block_res, text='Restart is coming soon :alien:')
     print(f"Alert sent: {response['ts']}")
-    if restarts_count > 20:
-        send_alert(ALERT_CHANNEL_ID, restarts_count)
+
 
 
 if __name__ == "__main__":
-    schedule.every().day.at("11:36").do(daily_check)
+    CHANNEL_ID = "C07UM0ETK5L"
+    DATE = datetime.now().strftime("%Y-%m-%d")
+    schedule.every(10).seconds.do(lambda: count_restarts(channel_id=CHANNEL_ID, date=DATE))
+    schedule.every().day.at("18:49").do(daily_check)
     print("Scheduler is running. Press CMD+C to exit.")
     try:
         while True:
