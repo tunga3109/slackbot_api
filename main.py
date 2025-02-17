@@ -11,7 +11,7 @@ from config import SLACK_BOT_TOKEN
 client = WebClient(token=SLACK_BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
 
 def extract_restart_requests(messages):
     """Извлекает сообщения о рестартах из списка сообщений."""
@@ -64,7 +64,7 @@ def extract_services_names(restart_requests_list):
         if not match:
             continue
 
-        service_name = match.group()
+        service_name = match.group().lower()
         details_pattern = re.compile(fr"{re.escape(service_name)}:\s*(.+?)(?:\n|$)", re.IGNORECASE)
         result = details_pattern.search(request)
 
