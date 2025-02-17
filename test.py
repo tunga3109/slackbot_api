@@ -59,21 +59,27 @@ class RestartAnalyzer:
     def extract_services(self, restart_requests):
         """Extracts service names from restart requests."""
         service_dict = {}
+        
         for request in restart_requests:
             match = SERVICE_KEYWORDS.search(request)
             if not match:
                 continue
-            service_name = match.group()
+
+            service_name = match.group().lower()
             details_pattern = re.compile(fr"{re.escape(service_name)}:\s*(.+?)(?:\n|$)", re.IGNORECASE)
             result = details_pattern.search(request)
+
             if result:
                 details = result.group(1).replace('*', '').replace('and', ',')
-                service_dict[service_name] = service_dict.get(service_name, "") + details + ","
+                
+                # Добавляем в множество для исключения дубликатов
+                if service_name not in service_dict:
+                    service_dict[service_name] = set()
+                
+                service_dict[service_name].update(map(str.strip, details.split(',')))
 
-        # Cleaning up results
-        for key in service_dict:
-            service_dict[key] = [item.strip() for item in service_dict[key].split(',') if item]
-        return service_dict
+        # Преобразуем множества обратно в списки
+        return {key: sorted(value) for key, value in service_dict.items()}
 
     def count_restarts(self, channel_id, date):
         """Counts restart requests and triggers an alert if necessary."""
