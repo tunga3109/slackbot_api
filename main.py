@@ -70,35 +70,42 @@ def extract_services_names(restart_requests_list):
 
         if result:
             details = result.group(1).replace('*', '').replace('and', ',')  
-            service_dict[service_name] = service_dict.get(service_name, "") + details + ","
 
-    for key in service_dict:
-        service_dict[key] = [item.strip() for item in service_dict[key].split(',') if item]
+            if service_name not in service_dict:
+                service_dict[service_name] = set()
+                
+            service_dict[service_name].update(map(str.strip, details.split(',')))
 
-    return service_dict
+    return {key: list(value) for key, value in service_dict.items()}
 
 def count_restarts(channel_id, date):
     restart_num = 0
-    ALERT_CHANNEL_ID = 'C08DFU192MT'
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(messages)
     services_names = extract_services_names(restart_requests)
-    for key in services_names:
-        restart_num += len(services_names[key]) * (2 if key == 'ecn/mm' else 1)
-        restart_num += sum(1 for service in services_names[key] if 'REF' in service)
+    restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if 'REF' in s) for key, services in services_names.items())
     
-    if restart_num > 20:
-        send_alert(ALERT_CHANNEL_ID, restart_num)
-
     return restart_num
-    
+
+alert_sent = False
+
 def send_alert(channel_id, count):
-    try:
-        alert_message = f" :red_circle: Alert limit exceeded: The number of restart requests has reached {count}. :red_circle:"
-        response = client.chat_postMessage(channel=channel_id, text=alert_message)
-        print(f"Alert sent: {response['ts']}")
-    except Exception as e:
-        print(f"Error sending alert: {e}")
+    global alert_sent  
+
+    if not alert_sent:
+        try:
+            alert_message = f" :red_circle: Alert! Restart requests exceeded limit: {count} :red_circle:\n <@U08ECFZBYNL> FYI"
+            response = client.chat_postMessage(channel=channel_id, text=alert_message)
+            print(f"Alert sent: {response['ts']}")
+            alert_sent = True  
+        except Exception as e:
+            print(f"Error sending alert: {e}")
+
+def normal(count):  
+    global alert_sent
+    if count <= 20 and alert_sent:
+        print("Restart count back to normal. Resetting alert flag.")
+        alert_sent = False
 
 def daily_check():
     import json
@@ -131,8 +138,7 @@ def daily_check():
 if __name__ == "__main__":
     CHANNEL_ID = "C07UM0ETK5L"
     DATE = datetime.now().strftime("%Y-%m-%d")
-    schedule.every(10).seconds.do(lambda: count_restarts(channel_id=CHANNEL_ID, date=DATE))
-    schedule.every().day.at("18:49").do(daily_check)
+    schedule.every().day.at("23:30").do(daily_check)
     print("Scheduler is running. Press CMD+C to exit.")
     try:
         while True:
