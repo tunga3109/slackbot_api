@@ -6,7 +6,7 @@ import json
 from datetime import datetime, timedelta
 from slack_sdk import WebClient
 
-from config import SLACK_BOT_TOKEN
+from config import RESTART_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
@@ -16,6 +16,7 @@ class SlackClient:
     """Handles communication with Slack API."""
     def __init__(self, token: str):
         self.client = WebClient(token=token)
+        self.alert_sent = False
 
     def fetch_messages(self, channel_id: str, date: str):
         """Fetches messages for a specific day."""
@@ -42,10 +43,19 @@ class SlackClient:
             print(f"Error sending message: {e}")
 
     def send_alert(self, channel_id: str, count: int):
-        """Sends an alert if restart limit is exceeded."""
-        alert_message = f" :red_circle: Alert! Restart requests exceeded limit: {count} :red_circle:"
-        self.send_message(channel_id, alert_message)
-
+            if not self.alert_sent:
+                try:
+                    alert_message = f" :red_circle: Alert! Restart requests exceeded limit: {count} :red_circle:\n <@U08ECFZBYNL> FYI"
+                    response = self.client.chat_postMessage(channel=channel_id, text=alert_message)
+                    print(f"Alert sent: {response['ts']}")
+                    self.alert_sent = True  
+                except Exception as e:
+                    print(f"Error sending alert: {e}")
+    
+    def normal(self, count):
+        if count <= 20 and self.alert_sent:
+            print("Restart count back to normal. Resetting alert flag.")
+            self.alert_sent = False
 
 class RestartAnalyzer:
     """Extracts and analyzes restart requests."""
@@ -87,10 +97,6 @@ class RestartAnalyzer:
         restart_requests = self.extract_restart_requests(messages)
         services_names = self.extract_services(restart_requests)
         restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if 'REF' in s) for key, services in services_names.items())
-
-        # Send alert if restart count exceeds limit
-        if restart_num > 20:
-            self.slack_client.send_alert(ALERT_CHANNEL_ID, restart_num)
 
         return restart_num
 
@@ -144,7 +150,7 @@ if __name__ == "__main__":
     NOTIFICATION_CHANNEL_ID = 'C088AHY4UAE'
 
     # Initialize components
-    slack_client = SlackClient(SLACK_BOT_TOKEN)
+    slack_client = SlackClient(RESTART_BOT_TOKEN)
     restart_analyzer = RestartAnalyzer(slack_client)
     scheduler = RestartScheduler(slack_client, restart_analyzer)
 
