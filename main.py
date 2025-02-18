@@ -12,14 +12,27 @@ client = WebClient(token=SLACK_BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
 service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
+mention_pattern = re.compile('<@U08ECFZBYNL>')
 
-def extract_restart_requests(messages):
-    """Извлекает сообщения о рестартах из списка сообщений."""
+def extract_restart_requests(channel_id, messages):
+    """Extracts restart-related messages from a list of Slack messages."""
     restart_requests = []
+
     for message in messages:
-        text = message.get('text', '')  
-        if restart_keywords.search(text) and text.startswith(('*##', '*###', '##', '###')) and service_keywords.search(text):
-            restart_requests.append(text)
+        if "thread_ts" not in message or "ts" not in message:
+            continue  # Skip messages without thread timestamp
+
+        thread_ts = message["ts"]
+        text = message.get("text", "")
+
+        replies_response = client.conversations_replies(channel=channel_id, ts=thread_ts)
+        replies = replies_response.get("messages", [])
+
+        # Check if any reply mentions the specific user and meets restart criteria
+        if any(mention_pattern.search(reply.get("text", "")) for reply in replies):
+            if restart_keywords.search(text) and text.startswith(("*##", "*###", "##", "###")) and service_keywords.search(text):
+                restart_requests.append(text)
+
     return restart_requests
     
 def fetch_messages_for_day(channel_id, date):
@@ -51,6 +64,7 @@ def fetch_messages_for_day(channel_id, date):
             latest=latest,
         )
         messages = response.get("messages", [])
+        
     except Exception as e:
         print(f"Error fetching messages: {e}")
      
@@ -81,7 +95,7 @@ def extract_services_names(restart_requests_list):
 def count_restarts(channel_id, date):
     restart_num = 0
     messages = fetch_messages_for_day(channel_id, date)
-    restart_requests = extract_restart_requests(messages)
+    restart_requests = extract_restart_requests(channel_id, messages)
     services_names = extract_services_names(restart_requests)
     restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if 'REF' in s) for key, services in services_names.items())
     
@@ -114,7 +128,7 @@ def daily_check():
     DATE = datetime.now().strftime("%Y-%m-%d") 
 
     messages = fetch_messages_for_day(CHANNEL_ID, DATE)
-    restart_requests = extract_restart_requests(messages)
+    restart_requests = extract_restart_requests(CHANNEL_ID, messages)
     services_names = extract_services_names(restart_requests)
     restarts_count = count_restarts(CHANNEL_ID, DATE)
 
@@ -132,8 +146,6 @@ def daily_check():
         ]
     client.chat_postMessage(channel=NOTIFICATION_CHANNEL_ID, blocks=code_block_res, text='Restart is coming soon :alien:')
     print(f"Alert sent: {response['ts']}")
-
-
 
 if __name__ == "__main__":
     CHANNEL_ID = "C07UM0ETK5L"
