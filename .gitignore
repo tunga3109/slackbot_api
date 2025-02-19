@@ -4,3 +4,5 @@ slack_monitor.log
 notes.txt
 debug.py
 TODO
+debug.log
+slackbotenv
