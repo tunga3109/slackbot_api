@@ -19,18 +19,9 @@ def extract_restart_requests(channel_id, messages):
     restart_requests = []
 
     for message in messages:
-        if "thread_ts" not in message or "ts" not in message:
-            continue  # Skip messages without thread timestamp
-
-        thread_ts = message["ts"]
-        text = message.get("text", "")
-
-        replies_response = client.conversations_replies(channel=channel_id, ts=thread_ts)
-        replies = replies_response.get("messages", [])
-
-        # Check if any reply mentions the specific user and meets restart criteria
-        if any(mention_pattern.search(reply.get("text", "")) for reply in replies):
-            if restart_keywords.search(text) and text.startswith(("*##", "*###", "##", "###")) and service_keywords.search(text):
+            
+        text = message.get("text", "").replace("*", "")
+        if restart_keywords.search(text) and text.startswith(("*##", "*###", "##", "###")) and service_keywords.search(text):
                 restart_requests.append(text)
 
     return restart_requests
