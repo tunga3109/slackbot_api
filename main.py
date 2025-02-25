@@ -65,22 +65,44 @@ def extract_services_names(restart_requests_list):
     service_dict = {}
 
     for request in restart_requests_list:
-        match = service_keywords.search(request)
-        if not match:
+        print(f"Processing request:\n{request}\n")  # Log request
+
+        matches = service_keywords.findall(request)
+        if not matches:
+            print("No service matches found.")
             continue
 
-        service_name = match.group().lower()
-        details_pattern = re.compile(fr"{re.escape(service_name)}:\s*(.+?)(?:\n|$)", re.IGNORECASE)
-        result = details_pattern.search(request)
+        print(f"Found services: {matches}")
 
-        if result:
-            details = result.group(1).replace('*', '').replace('and', ',')  
+        for match in matches:
+            service_name = match.lower()
 
-            if service_name not in service_dict:
-                service_dict[service_name] = set()
-                
-            service_dict[service_name].update(map(str.strip, details.split(',')))
+            # Regex pattern to extract details
+            details_pattern = re.compile(
+                fr"{re.escape(match)}:\s*(.+?)(?:\n|$)",  
+                re.IGNORECASE
+            )
+            result = details_pattern.search(request)
 
+            if result:
+                details = result.group(1).strip()
+
+                # Special handling: keep "Price-aggregator" details as a single string
+                if service_name == "price-aggregator":
+                    extracted_details = [d.strip() for d in details.split(",")]  # Store as a single list element
+                else:
+                    extracted_details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)
+
+                print(f"Extracted details for {service_name}: {extracted_details}")
+
+                if service_name not in service_dict:
+                    service_dict[service_name] = set()
+
+                service_dict[service_name].update(map(str.strip, extracted_details))
+            else:
+                print(f"No details found for {service_name}")
+
+    print(f"Final extracted services: {service_dict}")
     return {key: list(value) for key, value in service_dict.items()}
 
 def count_restarts(channel_id, date):
@@ -88,7 +110,7 @@ def count_restarts(channel_id, date):
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(channel_id, messages)
     services_names = extract_services_names(restart_requests)
-    restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if 'REF' in s) for key, services in services_names.items())
+    restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
     
     return restart_num
 
