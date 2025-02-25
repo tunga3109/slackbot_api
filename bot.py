@@ -97,8 +97,11 @@ class RestartAnalyzer:
                 result = details_pattern.search(request)
 
                 if result:
-                    details = result.group(1)
-                    details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
+                    details = result.group(1).strip()
+                    if service_name == "price-aggregator":
+                        details = [d.strip() for d in details.split(",")]
+                    else:
+                        details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
                     
                     print(f"Extracted details for {service_name}: {details}")
 
@@ -117,7 +120,7 @@ class RestartAnalyzer:
         messages = self.slack_client.fetch_messages(channel_id, date)
         restart_requests = self.extract_restart_requests(messages)
         services_names = self.extract_services(restart_requests)
-        restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if 'REF' in s) for key, services in services_names.items())
+        restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
 
         return restart_num
 
