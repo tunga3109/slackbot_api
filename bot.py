@@ -71,30 +71,46 @@ class RestartAnalyzer:
 
     def extract_restart_requests(self, messages):
         """Extracts messages related to restarts."""
-        return [msg['text'] for msg in messages if RESTART_KEYWORDS.search(msg.get('text', '')) and SERVICE_KEYWORDS.search(msg.get('text', ''))]
+        return [msg['text'].replace("*", "") for msg in messages if RESTART_KEYWORDS.search(msg.get('text', '')) and SERVICE_KEYWORDS.search(msg.get('text', ''))]
 
-    def extract_services(self, restart_requests):
-        """Extracts service names from restart requests."""
+    def extract_services(self, restart_requests_list):
         service_dict = {}
-        
-        for request in restart_requests:
-            match = SERVICE_KEYWORDS.search(request)
-            if not match:
+
+        for request in restart_requests_list:
+            print(f"Processing request:\n{request}\n")  # Лог запроса
+
+            matches = SERVICE_KEYWORDS.findall(request)
+            if not matches:
+                print("No service matches found.")
                 continue
 
-            service_name = match.group().lower()
-            details_pattern = re.compile(fr"{re.escape(service_name)}:\s*(.+?)(?:\n|$)", re.IGNORECASE)
-            result = details_pattern.search(request)
+            print(f"Found services: {matches}")
 
-            if result:
-                details = result.group(1).replace('*', '').replace('and', ',')
-                
-                if service_name not in service_dict:
-                    service_dict[service_name] = set()
-                
-                service_dict[service_name].update(map(str.strip, details.split(',')))
+            for match in matches:
+                service_name = match.lower()
 
-        return {key: sorted(value) for key, value in service_dict.items()}
+                # Регулярное выражение для поиска деталей сервиса
+                details_pattern = re.compile(
+                    fr"{re.escape(match)}:\s*([\w\d().|+ ,]+)",  
+                    re.IGNORECASE
+                )
+                result = details_pattern.search(request)
+
+                if result:
+                    details = result.group(1)
+                    details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
+                    
+                    print(f"Extracted details for {service_name}: {details}")
+
+                    if service_name not in service_dict:
+                        service_dict[service_name] = set()
+
+                    service_dict[service_name].update(map(str.strip, details))
+                else:
+                    print(f"No details found for {service_name}")
+
+        print(f"Final extracted services: {service_dict}")
+        return {key: list(value) for key, value in service_dict.items()}
 
     def count_restarts(self, channel_id, date):
         """Counts restart requests and triggers an alert if necessary."""
