@@ -11,7 +11,7 @@ from config import SLACK_BOT_TOKEN
 client = WebClient(token=SLACK_BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
 mention_pattern = re.compile('<@U08ECFZBYNL>')
 
 def extract_restart_requests(channel_id, messages):
@@ -79,7 +79,7 @@ def extract_services_names(restart_requests_list):
 
             # Regex pattern to extract details
             details_pattern = re.compile(
-                fr"{re.escape(match)}:\s*(.+?)(?:\n|$)",  
+                fr"{re.escape(match)}\s*[-\:]\s*(.+?)(?:\n|$)",  # разделитель [-\:] 
                 re.IGNORECASE
             )
             result = details_pattern.search(request)
@@ -110,7 +110,7 @@ def count_restarts(channel_id, date):
     messages = fetch_messages_for_day(channel_id, date)
     restart_requests = extract_restart_requests(channel_id, messages)
     services_names = extract_services_names(restart_requests)
-    restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
+    restart_num = sum(len(services) * (2 if (key == 'ecn/mm') or (key == 'ecn and mm') else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
     
     return restart_num
 
