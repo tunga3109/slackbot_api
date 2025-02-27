@@ -11,7 +11,7 @@ from config import SLACK_BOT_TOKEN
 client = WebClient(token=SLACK_BOT_TOKEN)
 
 restart_keywords = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
+service_keywords = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
 mention_pattern = re.compile('<@U08ECFZBYNL>')
 
 def extract_restart_requests(channel_id, messages):
@@ -88,8 +88,15 @@ def extract_services_names(restart_requests_list):
                 details = result.group(1).strip()
 
                 # Special handling: keep "Price-aggregator" details as a single string
-                if service_name == "price-aggregator":
+                if service_name in ("price-aggregator", "price_aggregator"):
                     extracted_details = [d.strip() for d in details.split(",")]  # Store as a single list element
+                    service_name = 'price-aggregator'
+                elif service_name in ('ecn/mm', 'ecn and mm'):
+                    extracted_details = [d.strip() for d in details.split(",")]
+                    service_name = 'ecn/mm'
+                elif service_name in ('driver',):
+                    extracted_details = [d.strip() for d in details.split(",")]
+                    service_name = 'market-driver'
                 else:
                     extracted_details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)
 
