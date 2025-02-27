@@ -14,7 +14,7 @@ from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-SERVICE_KEYWORDS = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
+SERVICE_KEYWORDS = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
 
 class SlackClient:
     """Handles communication with Slack API."""
@@ -98,8 +98,15 @@ class RestartAnalyzer:
 
                 if result:
                     details = result.group(1).strip()
-                    if service_name == "price-aggregator":
+                    if service_name in ("price-aggregator", "price_aggregator"):
+                        details = [d.strip() for d in details.split(",")]  # Store as a single list element
+                        service_name = 'price-aggregator'
+                    elif service_name in ('ecn/mm', 'ecn and mm'):
                         details = [d.strip() for d in details.split(",")]
+                        service_name = 'ecn/mm'
+                    elif service_name in ('driver',):
+                        details = [d.strip() for d in details.split(",")]
+                        service_name = 'market-driver'
                     else:
                         details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
                     
@@ -154,7 +161,7 @@ class RestartScheduler:
 
     def start_scheduler(self):
         """Starts the scheduled tasks."""
-        schedule.every().day.at("12:19", "Africa/Bissau").do(lambda: self.daily_check())
+        schedule.every().day.at("23:25", "Africa/Bissau").do(lambda: self.daily_check())
 
         print("Scheduler is running. Press CMD+C to exit.")
         try:
