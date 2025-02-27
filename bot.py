@@ -14,7 +14,7 @@ from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-SERVICE_KEYWORDS = re.compile(r"\b(\*?ecn\*?/mm\*?|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER)\b", re.IGNORECASE)
+SERVICE_KEYWORDS = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
 
 class SlackClient:
     """Handles communication with Slack API."""
@@ -91,7 +91,7 @@ class RestartAnalyzer:
 
                 # Регулярное выражение для поиска деталей сервиса
                 details_pattern = re.compile(
-                    fr"{re.escape(match)}:\s*([\w\d().|+ ,]+)",  
+                    fr"{re.escape(match)}\s*[-\:]\s*(.+?)(?:\n|$)",  
                     re.IGNORECASE
                 )
                 result = details_pattern.search(request)
@@ -120,7 +120,7 @@ class RestartAnalyzer:
         messages = self.slack_client.fetch_messages(channel_id, date)
         restart_requests = self.extract_restart_requests(messages)
         services_names = self.extract_services(restart_requests)
-        restart_num = sum(len(services) * (2 if key == 'ecn/mm' else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
+        restart_num = sum(len(services) * (2 if (key == 'ecn/mm') or (key == 'ecn and mm') else 1) + sum(1 for s in services if '+ REF' in s) for key, services in services_names.items())
 
         return restart_num
 
