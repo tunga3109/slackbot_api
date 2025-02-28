@@ -99,13 +99,13 @@ class RestartAnalyzer:
                 if result:
                     details = result.group(1).strip()
                     if service_name in ("price-aggregator", "price_aggregator"):
-                        details = [d.strip() for d in details.split(",")]  # Store as a single list element
+                        details = re.split(r"\s*[,/]\s*", details)  # Store as a single list element
                         service_name = 'price-aggregator'
                     elif service_name in ('ecn/mm', 'ecn and mm'):
-                        details = [d.strip() for d in details.split(",")]
+                        details = re.split(r"\s*[,/]\s*", details)
                         service_name = 'ecn/mm'
-                    elif service_name in ('driver',):
-                        details = [d.strip() for d in details.split(",")]
+                    elif service_name in ('driver', 'mddriver', 'drivers'):
+                        details = re.split(r"\s*[,/]\s*", details)
                         service_name = 'market-driver'
                     else:
                         details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`

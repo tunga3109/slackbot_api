@@ -89,13 +89,13 @@ def extract_services_names(restart_requests_list):
 
                 # Special handling: keep "Price-aggregator" details as a single string
                 if service_name in ("price-aggregator", "price_aggregator"):
-                    extracted_details = [d.strip() for d in details.split(",")]  # Store as a single list element
+                    extracted_details = re.split(r"\s*[,/]\s*", details)  # Store as a single list element
                     service_name = 'price-aggregator'
                 elif service_name in ('ecn/mm', 'ecn and mm'):
-                    extracted_details = [d.strip() for d in details.split(",")]
+                    extracted_details = re.split(r"\s*[,/]\s*", details)
                     service_name = 'ecn/mm'
-                elif service_name in ('driver',):
-                    extracted_details = [d.strip() for d in details.split(",")]
+                elif service_name in ('driver', 'mddriver', 'drivers'):
+                    extracted_details = re.split(r"\s*[,/]\s*", details)
                     service_name = 'market-driver'
                 else:
                     extracted_details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)
