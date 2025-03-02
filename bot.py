@@ -14,7 +14,7 @@ from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-SERVICE_KEYWORDS = re.compile(r"\b(\*?ecn\*?/mm\*?|\*?ecn\*?/mm|ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|driver)\b", re.IGNORECASE)
+SERVICE_KEYWORDS = re.compile(r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|drivers)\b", re.IGNORECASE)
 
 class SlackClient:
     """Handles communication with Slack API."""
