@@ -14,7 +14,7 @@ from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-SERVICE_KEYWORDS = re.compile(r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|drivers|driver)\b", re.IGNORECASE)
+SERVICE_KEYWORDS = re.compile(r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|drivers|driver|RiskManager)\b", re.IGNORECASE)
 
 class SlackClient:
     """Handles communication with Slack API."""
@@ -120,7 +120,7 @@ class RestartAnalyzer:
                     print(f"No details found for {service_name}")
 
         print(f"Final extracted services: {service_dict}")
-        return {key: list(value) for key, value in service_dict.items()}
+        return {key: list(sorted(value)) for key, value in service_dict.items()}
 
     def count_restarts(self, channel_id, date):
         """Counts restart requests and triggers an alert if necessary."""
