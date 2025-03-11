@@ -89,6 +89,10 @@ class RestartAnalyzer:
             for match in matches:
                 service_name = match.lower()
 
+                if service_name in ("riskmanager", "risk-manager"):  # Добавляем сразу
+                    service_dict["risk-manager"] = '1'
+                    continue
+
                 # Регулярное выражение для поиска деталей сервиса
                 details_pattern = re.compile(
                     fr"{re.escape(match)}\s*[-\:]\s*(.+?)(?:\n|$)",  
@@ -109,6 +113,7 @@ class RestartAnalyzer:
                         service_name = 'market-driver'  
                     elif service_name in ("riskmanager", "RiskManager"):
                         service_name = "risk-manager"
+                        service_dict[service_name] = True
                     else:
                         details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
                     
