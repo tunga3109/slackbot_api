@@ -111,9 +111,6 @@ class RestartAnalyzer:
                     elif service_name in ('driver', 'mddriver', 'drivers', 'md'):
                         details = re.split(r"\s*[,/|]\s*", details)
                         service_name = 'market-driver'  
-                    elif service_name in ("riskmanager", "RiskManager"):
-                        service_name = "risk-manager"
-                        service_dict[service_name] = True
                     else:
                         details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)  # Разделяем по `|`, `,`, `+`
                     
