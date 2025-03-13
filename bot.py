@@ -201,6 +201,21 @@ class SlackBot:
             if RESTART_KEYWORDS.search(text):
                 if restarts_count > 20:
                     self.slack_client.send_alert(ALERT_CHANNEL_ID, restarts_count)
+                    date = datetime.now().strftime("%Y-%m-%d")
+                    messages = self.slack_client.fetch_messages(CHANNEL_ID, date)
+                    restart_requests = self.restart_analyzer.extract_restart_requests(messages)
+                    services_names = self.restart_analyzer.extract_services(restart_requests)
+                    message_about_services = json.dumps(services_names, indent=4)
+
+                    code_block_res = [{
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"```{message_about_services}```"
+                        }
+                    }]
+                    self.slack_client.send_message(ALERT_CHANNEL_ID, 'Restart list', blocks=code_block_res)
+
 
     def run(self):
         """Starts the Slack bot using Socket Mode."""
