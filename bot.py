@@ -14,7 +14,7 @@ from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
 
 # Constants
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
-SERVICE_KEYWORDS = re.compile(r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|aggregator|market driver|md|risk manager|manager|MDDRIVER|drivers|driver|RiskManager)\b", re.IGNORECASE)
+SERVICE_KEYWORDS = re.compile(r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|pa|market driver|md|risk manager|manager|MDDRIVER|drivers|driver|RiskManager)\b", re.IGNORECASE)
 
 class SlackClient:
     """Handles communication with Slack API."""
@@ -102,7 +102,7 @@ class RestartAnalyzer:
 
                 if result:
                     details = result.group(1).strip()
-                    if service_name in ("price-aggregator", "price_aggregator"):
+                    if service_name in ("price-aggregator", "price_aggregator", 'pa'):
                         details = re.split(r"\s*[,/|]\s*", details)  # Store as a single list element
                         service_name = 'price-aggregator'
                     elif service_name in ('ecn/mm', 'ecn and mm'):
