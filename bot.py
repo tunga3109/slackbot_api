@@ -167,8 +167,8 @@ class RestartScheduler:
 
     def start_scheduler(self):
         """Starts the scheduled tasks."""
-        schedule.every().day.at("23:25", "Africa/Bissau").do(lambda: self.daily_check())
-
+        schedule.every().day.at("15:57", "Africa/Bissau").do(lambda: self.daily_check())
+        schedule.every(1).minutes.do(self.send_ping)
         print("Scheduler is running. Press CMD+C to exit.")
         try:
             while True:
@@ -176,6 +176,11 @@ class RestartScheduler:
                 time.sleep(10)
         except KeyboardInterrupt:
             print("\nScheduler stopped. Goodbye!")
+
+    def send_ping(self):
+        """Отправляет автоматический пинг в канал."""
+        self.slack_client.send_message(PING_CHANNEL_ID, "✅ Bot is alive!")
+        print(f"Automated ping sent to {PING_CHANNEL_ID}.")
 
 
 class SlackBot:
@@ -231,6 +236,7 @@ if __name__ == "__main__":
     ALERT_CHANNEL_ID = 'C08DFU192MT'
     CHANNEL_ID = "C07UM0ETK5L"
     NOTIFICATION_CHANNEL_ID = 'C088AHY4UAE'
+    PING_CHANNEL_ID = 'C08KKABJM6Z'
 
     slack_bot = SlackBot(bot_token=RESTART_BOT_TOKEN, app_token=SOCKET_BOT_TOKEN)
     scheduler = RestartScheduler(slack_bot.slack_client, slack_bot.restart_analyzer)
