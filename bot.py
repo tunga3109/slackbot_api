@@ -62,6 +62,8 @@ class SlackClient:
         if count <= 20 and self.alert_sent:
             print("Restart count back to normal. Resetting alert flag.")
             self.alert_sent = False
+        else:
+            print(f"Restart count: {count}")
 
 
 class RestartAnalyzer:
@@ -205,6 +207,7 @@ class SlackBot:
                     messages = self.slack_client.fetch_messages(CHANNEL_ID, date)
                     restart_requests = self.restart_analyzer.extract_restart_requests(messages)
                     services_names = self.restart_analyzer.extract_services(restart_requests)
+                    restarts_count = self.restart_analyzer.count_restarts(CHANNEL_ID, date)
                     message_about_services = json.dumps(services_names, indent=4)
 
                     code_block_res = [{
