@@ -227,8 +227,6 @@ class SlackBot:
                 else:
                     print(f"Restart count: {restarts_count}")
 
-
-
     def run(self):
         """Starts the Slack bot using Socket Mode."""
         handler = SocketModeHandler(self.app, self.app_token)
