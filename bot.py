@@ -169,7 +169,7 @@ class RestartScheduler:
 
     def start_scheduler(self):
         """Starts the scheduled tasks."""
-        schedule.every().day.at("15:57", "Africa/Bissau").do(lambda: self.daily_check())
+        schedule.every().day.at("20:30", "Africa/Bissau").do(lambda: self.daily_check())
         schedule.every(1).minutes.do(self.send_ping)
         print("Scheduler is running. Press CMD+C to exit.")
         try:
