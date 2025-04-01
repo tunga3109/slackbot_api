@@ -147,7 +147,7 @@ class RestartScheduler:
 
     def daily_check(self):
         """Performs a daily restart analysis and sends a summary."""
-        date = datetime.now().strftime("%Y-%m-%d")
+        date = datetime.now().strftime("%d-%m-%Y")
         messages = self.slack_client.fetch_messages(CHANNEL_ID, date)
         restart_requests = self.restart_analyzer.extract_restart_requests(messages)
         services_names = self.restart_analyzer.extract_services(restart_requests)
