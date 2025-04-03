@@ -127,7 +127,7 @@ class RestartAnalyzer:
                     print(f"No details found for {service_name}")
 
         print(f"Final extracted services: {service_dict}")
-        return {key: list(sorted(value)) for key, value in service_dict.items()}
+        return {key: list(sorted(value, key=len)) for key, value in service_dict.items()}
 
     def count_restarts(self, channel_id, date):
         """Counts restart requests and triggers an alert if necessary."""
