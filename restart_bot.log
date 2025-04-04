@@ -1,0 +1,660 @@
+2025-04-04 09:15:08 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:15:29 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:15:29 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:15:29 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:15:29 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:15:29 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:15:29 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'EUR.4', 'ONEXCC.SEK.1', 'SB.SEK.1', 'SB.EUR.2', 'USD.12', 'SEK.1', 'ONEXCC.EUR.1', 'SB.USD.6'}}
+2025-04-04 09:15:29 UTC [INFO] Restart count: 20
+2025-04-04 09:16:08 UTC [INFO] Message sent: 1743758168.560779
+2025-04-04 09:16:08 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:17:09 UTC [INFO] Message sent: 1743758229.010119
+2025-04-04 09:17:09 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:17:34 UTC [INFO] Final extracted services: {}
+2025-04-04 09:17:34 UTC [INFO] Restart count: 0
+2025-04-04 09:18:09 UTC [INFO] Message sent: 1743758289.414719
+2025-04-04 09:18:09 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:18:16 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:24:11 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:24:32 UTC [INFO] Final extracted services: {}
+2025-04-04 09:24:32 UTC [INFO] Final extracted services: {}
+2025-04-04 09:24:32 UTC [INFO] Message sent: 1743758672.898079
+2025-04-04 09:24:33 UTC [INFO] Message sent: 1743758673.294489
+2025-04-04 09:24:51 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:24:51 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:24:51 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:24:52 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:24:52 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:24:52 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SEK.1', 'EUR.4', 'SB.EUR.2', 'SB.USD.6', 'SB.SEK.1', 'ONEXCC.SEK.1', 'ONEXCC.EUR.1', 'USD.12'}}
+2025-04-04 09:24:52 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:24:52 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:24:52 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:24:52 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:24:52 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:24:52 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SEK.1', 'EUR.4', 'SB.EUR.2', 'SB.USD.6', 'SB.SEK.1', 'ONEXCC.SEK.1', 'ONEXCC.EUR.1', 'USD.12'}}
+2025-04-04 09:24:52 UTC [INFO] Message sent: 1743758692.701139
+2025-04-04 09:24:53 UTC [INFO] Message sent: 1743758693.081859
+2025-04-04 09:25:00 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:25:27 UTC [INFO] Final extracted services: {}
+2025-04-04 09:25:27 UTC [INFO] Restart count: 0
+2025-04-04 09:25:34 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:25:34 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:25:34 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:25:34 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:25:34 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:25:34 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'USD.12', 'ONEXCC.SEK.1', 'SB.USD.6', 'SEK.1', 'SB.SEK.1', 'ONEXCC.EUR.1', 'EUR.4', 'SB.EUR.2'}}
+2025-04-04 09:25:34 UTC [INFO] Restart count: 20
+2025-04-04 09:25:45 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:25:45 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:25:45 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:25:45 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:25:45 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:25:45 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'USD.12', 'ONEXCC.SEK.1', 'SB.USD.6', 'SEK.1', 'SB.SEK.1', 'ONEXCC.EUR.1', 'EUR.4', 'SB.EUR.2'}}
+2025-04-04 09:25:45 UTC [INFO] Restart count: 20
+2025-04-04 09:25:49 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:25:55 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:26:03 UTC [INFO] Final extracted services: {}
+2025-04-04 09:26:03 UTC [INFO] Restart count: 0
+2025-04-04 09:26:07 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:26:07 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:26:07 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:26:07 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:26:07 UTC [INFO] No details found for riskmanager
+2025-04-04 09:26:07 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:26:07 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'ecn/mm': {'SB.EUR.2', 'SB.SEK.1', 'SEK.1', 'ONEXCC.SEK.1', 'USD.12', 'EUR.4', 'ONEXCC.EUR.1', 'SB.USD.6'}}
+2025-04-04 09:26:07 UTC [INFO] Restart count: 19
+2025-04-04 09:26:56 UTC [INFO] Message sent: 1743758816.108759
+2025-04-04 09:26:56 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:27:56 UTC [INFO] Message sent: 1743758876.592559
+2025-04-04 09:27:56 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:28:57 UTC [INFO] Message sent: 1743758937.046619
+2025-04-04 09:28:57 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:29:57 UTC [INFO] Message sent: 1743758997.498679
+2025-04-04 09:29:57 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:30:20 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:36:01 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:36:17 UTC [INFO] Final extracted services: {}
+2025-04-04 09:36:17 UTC [INFO] Restart count: 0
+2025-04-04 09:36:20 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:36:20 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:36:20 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:36:20 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:36:20 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:36:20 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'USD.12', 'SB.EUR.2', 'ONEXCC.SEK.1', 'ONEXCC.EUR.1', 'SEK.1', 'SB.SEK.1', 'EUR.4'}}
+2025-04-04 09:36:20 UTC [INFO] Restart count: 20
+2025-04-04 09:36:34 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:36:34 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:36:34 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SEK.1', 'SB.SEK.1', 'ONEXCC.EUR.1', 'SB.USD.6', 'ONEXCC.SEK.1', 'EUR.4', 'SB.EUR.2', 'USD.12'}}
+2025-04-04 09:36:34 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:36:34 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:36:34 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:36:34 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SEK.1', 'SB.SEK.1', 'ONEXCC.EUR.1', 'SB.USD.6', 'ONEXCC.SEK.1', 'EUR.4', 'SB.EUR.2', 'USD.12'}}
+2025-04-04 09:36:35 UTC [INFO] Message sent: 1743759395.017129
+2025-04-04 09:36:35 UTC [INFO] Message sent: 1743759395.372339
+2025-04-04 09:36:46 UTC [INFO] Final extracted services: {}
+2025-04-04 09:36:46 UTC [INFO] Restart count: 0
+2025-04-04 09:37:01 UTC [INFO] Message sent: 1743759421.843589
+2025-04-04 09:37:01 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:37:02 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:37:14 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:37:14 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:37:14 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:37:14 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:37:14 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:37:14 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'USD.12', 'SB.EUR.2', 'ONEXCC.SEK.1', 'ONEXCC.EUR.1', 'SEK.1', 'SB.SEK.1', 'EUR.4'}}
+2025-04-04 09:37:14 UTC [INFO] Restart count: 20
+2025-04-04 09:37:53 UTC [INFO] Final extracted services: {}
+2025-04-04 09:37:53 UTC [INFO] Restart count: 0
+2025-04-04 09:38:02 UTC [INFO] Message sent: 1743759482.238399
+2025-04-04 09:38:02 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:38:02 UTC [INFO] Message sent: 1743759482.899909
+2025-04-04 09:38:02 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:38:03 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:38:03 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:38:03 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:38:03 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:38:03 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:38:03 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'USD.12', 'SB.EUR.2', 'ONEXCC.SEK.1', 'ONEXCC.EUR.1', 'SEK.1', 'SB.SEK.1', 'EUR.4'}}
+2025-04-04 09:38:03 UTC [INFO] Restart count: 20
+2025-04-04 09:38:35 UTC [INFO] Final extracted services: {}
+2025-04-04 09:38:35 UTC [INFO] Restart count: 0
+2025-04-04 09:39:02 UTC [INFO] Message sent: 1743759542.644539
+2025-04-04 09:39:02 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:39:03 UTC [INFO] Message sent: 1743759543.342899
+2025-04-04 09:39:03 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:40:03 UTC [INFO] Message sent: 1743759603.096779
+2025-04-04 09:40:03 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:40:03 UTC [INFO] Message sent: 1743759603.749509
+2025-04-04 09:40:03 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:40:15 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:40:22 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:40:23 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:41:23 UTC [INFO] Message sent: 1743759683.676729
+2025-04-04 09:41:23 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:41:47 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:41:49 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:41:59 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:41:59 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:41:59 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:41:59 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:41:59 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:41:59 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'ONEXCC.SEK.1', 'SEK.1', 'EUR.4', 'SB.USD.6', 'SB.EUR.2', 'USD.12', 'ONEXCC.EUR.1', 'SB.SEK.1'}}
+2025-04-04 09:41:59 UTC [INFO] Restart count: 20
+2025-04-04 09:42:00 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:42:00 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:42:00 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:42:00 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:42:00 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:42:00 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'ONEXCC.SEK.1', 'SEK.1', 'EUR.4', 'SB.USD.6', 'SB.EUR.2', 'USD.12', 'ONEXCC.EUR.1', 'SB.SEK.1'}}
+2025-04-04 09:42:00 UTC [INFO] Restart count: 20
+2025-04-04 09:42:50 UTC [INFO] Message sent: 1743759770.094999
+2025-04-04 09:42:50 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:43:06 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:43:12 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:43:21 UTC [INFO] Final extracted services: {}
+2025-04-04 09:43:21 UTC [INFO] Restart count: 0
+2025-04-04 09:43:28 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:43:28 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:43:28 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:43:28 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:43:28 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:43:28 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'USD.12', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'SEK.1', 'ONEXCC.SEK.1', 'EUR.4', 'SB.USD.6'}}
+2025-04-04 09:43:28 UTC [INFO] Restart count: 20
+2025-04-04 09:43:36 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 09:43:40 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 09:43:47 UTC [INFO] Final extracted services: {}
+2025-04-04 09:43:47 UTC [INFO] Restart count: 0
+2025-04-04 09:43:55 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1, USD.51
+
+2025-04-04 09:43:55 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:43:55 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:43:55 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:43:55 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1', 'USD.51']
+2025-04-04 09:43:55 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'SB.SEK.1', 'SEK.1', 'SB.EUR.2', 'ONEXCC.EUR.1', 'EUR.4', 'ONEXCC.SEK.1', 'USD.12', 'USD.51'}}
+2025-04-04 09:43:56 UTC [INFO] Alert sent: 1743759836.052419
+2025-04-04 09:43:56 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1, USD.51
+
+2025-04-04 09:43:56 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:43:56 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:43:56 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:43:56 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1', 'USD.51']
+2025-04-04 09:43:56 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'SB.SEK.1', 'SEK.1', 'SB.EUR.2', 'ONEXCC.EUR.1', 'EUR.4', 'ONEXCC.SEK.1', 'USD.12', 'USD.51'}}
+2025-04-04 09:43:56 UTC [INFO] Restart count: 22
+2025-04-04 09:43:56 UTC [INFO] Message sent: 1743759836.769309
+2025-04-04 09:44:41 UTC [INFO] Message sent: 1743759881.032069
+2025-04-04 09:44:41 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:44:49 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1, ONEXCC.SEK.1
+
+2025-04-04 09:44:49 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:44:49 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:44:49 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:44:49 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1', 'ONEXCC.SEK.1']
+2025-04-04 09:44:49 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'SB.SEK.1', 'SEK.1', 'SB.EUR.2', 'ONEXCC.EUR.1', 'EUR.4', 'ONEXCC.SEK.1', 'USD.12'}}
+2025-04-04 09:44:49 UTC [INFO] Restart count back to normal. Resetting alert flag.
+2025-04-04 09:44:49 UTC [INFO] Restart count: 20
+2025-04-04 09:44:59 UTC [INFO] Processing request:
+### Going to reboot :
+MD: reuters-22
+PA: MMS_SHARES + REF
+RiskManager
+ECN/MM: USD.12, EUR.4, SEK.1, SB.USD.6, SB.EUR.2, SB.SEK.1, ONEXCC.EUR.1
+
+2025-04-04 09:44:59 UTC [INFO] Found services: ['MD', 'PA', 'RiskManager', 'ECN/MM']
+2025-04-04 09:44:59 UTC [INFO] Extracted details for market-driver: ['reuters-22']
+2025-04-04 09:44:59 UTC [INFO] Extracted details for price-aggregator: ['MMS_SHARES + REF']
+2025-04-04 09:44:59 UTC [INFO] Extracted details for ecn/mm: ['USD.12', 'EUR.4', 'SEK.1', 'SB.USD.6', 'SB.EUR.2', 'SB.SEK.1', 'ONEXCC.EUR.1']
+2025-04-04 09:44:59 UTC [INFO] Final extracted services: {'market-driver': {'reuters-22'}, 'price-aggregator': {'MMS_SHARES + REF'}, 'risk-manager': {'1'}, 'ecn/mm': {'SB.USD.6', 'SB.SEK.1', 'SEK.1', 'SB.EUR.2', 'ONEXCC.EUR.1', 'EUR.4', 'USD.12'}}
+2025-04-04 09:44:59 UTC [INFO] Restart count: 18
+2025-04-04 09:45:41 UTC [INFO] Message sent: 1743759941.492199
+2025-04-04 09:45:41 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:46:41 UTC [INFO] Message sent: 1743760001.944849
+2025-04-04 09:46:41 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:47:34 UTC [INFO] Final extracted services: {}
+2025-04-04 09:47:34 UTC [INFO] Restart count: 0
+2025-04-04 09:47:42 UTC [INFO] Message sent: 1743760062.341949
+2025-04-04 09:47:42 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:48:42 UTC [INFO] Message sent: 1743760122.789659
+2025-04-04 09:48:42 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:49:43 UTC [INFO] Message sent: 1743760183.270459
+2025-04-04 09:49:43 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:50:43 UTC [INFO] Message sent: 1743760243.721619
+2025-04-04 09:50:43 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:51:44 UTC [INFO] Message sent: 1743760304.187139
+2025-04-04 09:51:44 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:52:44 UTC [INFO] Message sent: 1743760364.667349
+2025-04-04 09:52:44 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:53:45 UTC [INFO] Message sent: 1743760425.132879
+2025-04-04 09:53:45 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:54:34 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+
+2025-04-04 09:54:34 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM']
+2025-04-04 09:54:34 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 09:54:34 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 09:54:34 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 09:54:34 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 09:54:34 UTC [INFO] Restart count: 6
+2025-04-04 09:54:45 UTC [INFO] Message sent: 1743760485.574039
+2025-04-04 09:54:45 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:55:46 UTC [INFO] Message sent: 1743760546.045059
+2025-04-04 09:55:46 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:56:46 UTC [INFO] Message sent: 1743760606.534969
+2025-04-04 09:56:46 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:57:46 UTC [INFO] Message sent: 1743760666.925289
+2025-04-04 09:57:46 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:58:47 UTC [INFO] Message sent: 1743760727.320589
+2025-04-04 09:58:47 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 09:59:47 UTC [INFO] Message sent: 1743760787.777619
+2025-04-04 09:59:47 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:00:48 UTC [INFO] Message sent: 1743760848.266529
+2025-04-04 10:00:48 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:01:48 UTC [INFO] Message sent: 1743760908.719709
+2025-04-04 10:01:48 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:02:49 UTC [INFO] Message sent: 1743760969.192489
+2025-04-04 10:02:49 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:03:49 UTC [INFO] Message sent: 1743761029.608269
+2025-04-04 10:03:49 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:04:50 UTC [INFO] Message sent: 1743761090.056619
+2025-04-04 10:04:50 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:05:50 UTC [INFO] Message sent: 1743761150.522569
+2025-04-04 10:05:50 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:06:51 UTC [INFO] Message sent: 1743761210.988389
+2025-04-04 10:06:51 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:07:51 UTC [INFO] Message sent: 1743761271.465689
+2025-04-04 10:07:51 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:08:51 UTC [INFO] Message sent: 1743761331.911109
+2025-04-04 10:08:51 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:09:52 UTC [INFO] Message sent: 1743761392.354369
+2025-04-04 10:09:52 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:10:52 UTC [INFO] Message sent: 1743761452.819999
+2025-04-04 10:10:52 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:11:43 UTC [INFO] Final extracted services: {}
+2025-04-04 10:11:43 UTC [INFO] Restart count: 0
+2025-04-04 10:11:53 UTC [INFO] Message sent: 1743761513.236979
+2025-04-04 10:11:53 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:12:10 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM: SB.USD.1
+
+2025-04-04 10:12:10 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:12:10 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:12:10 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:12:10 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:12:10 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:12:10 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:12:10 UTC [INFO] Restart count: 8
+2025-04-04 10:12:46 UTC [INFO] Final extracted services: {}
+2025-04-04 10:12:46 UTC [INFO] Restart count: 0
+2025-04-04 10:12:53 UTC [INFO] Message sent: 1743761573.648199
+2025-04-04 10:12:53 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:13:05 UTC [INFO] Processing request:
+_### Going to reboot:_
+_Driver - IG_
+_Price-aggregator - MMS_INDICES_COMMODITIES_
+_ECN and MM - USD.1, SB.USD.1_
+_MM: SB.USD.1_
+
+2025-04-04 10:13:05 UTC [INFO] Found services: ['MM']
+2025-04-04 10:13:05 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1_']
+2025-04-04 10:13:05 UTC [INFO] Final extracted services: {'mm': {'SB.USD.1_', 'USD.1'}}
+2025-04-04 10:13:05 UTC [INFO] Restart count: 2
+2025-04-04 10:13:29 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM: SB.USD.1
+
+2025-04-04 10:13:29 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:13:29 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:13:29 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:13:29 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:13:29 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:13:29 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:13:29 UTC [INFO] Restart count: 8
+2025-04-04 10:13:54 UTC [INFO] Message sent: 1743761634.086019
+2025-04-04 10:13:54 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:13:55 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM: SB.USD.6
+
+2025-04-04 10:13:55 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:13:55 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:13:55 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:13:55 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:13:55 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:13:55 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:13:55 UTC [INFO] Restart count: 8
+2025-04-04 10:14:06 UTC [INFO] Final extracted services: {}
+2025-04-04 10:14:06 UTC [INFO] Restart count: 0
+2025-04-04 10:14:10 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM: SB.USD.6
+
+2025-04-04 10:14:10 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:14:10 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:14:10 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:14:10 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:14:10 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:14:10 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:14:10 UTC [INFO] Restart count: 8
+2025-04-04 10:14:47 UTC [INFO] Final extracted services: {}
+2025-04-04 10:14:47 UTC [INFO] Restart count: 0
+2025-04-04 10:14:54 UTC [INFO] Message sent: 1743761694.469679
+2025-04-04 10:14:54 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:14:56 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+MM: SB.USD.6
+ECN and MM - USD.1, SB.USD.1
+
+2025-04-04 10:14:56 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'MM', 'ECN and MM']
+2025-04-04 10:14:56 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:14:56 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:14:56 UTC [INFO] Extracted details for mm: ['SB.USD.6']
+2025-04-04 10:14:56 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:14:56 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'mm': {'SB.USD.6'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:14:56 UTC [INFO] Restart count: 7
+2025-04-04 10:15:54 UTC [INFO] Message sent: 1743761754.925129
+2025-04-04 10:15:54 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:16:35 UTC [INFO] Final extracted services: {}
+2025-04-04 10:16:35 UTC [INFO] Restart count: 0
+2025-04-04 10:16:36 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 10:16:38 UTC [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 10:16:57 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+MM: SB.USD.6
+ECN and MM - USD.1, SB.USD.1
+
+2025-04-04 10:16:57 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'MM', 'ECN and MM']
+2025-04-04 10:16:57 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:16:57 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:16:57 UTC [INFO] Extracted details for mm: ['SB.USD.6']
+2025-04-04 10:16:57 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:16:57 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'mm': {'SB.USD.6'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:16:57 UTC [INFO] Restart count: 7
+2025-04-04 10:17:04 UTC [INFO] Final extracted services: {}
+2025-04-04 10:17:04 UTC [INFO] Restart count: 0
+2025-04-04 10:17:11 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM: SB.USD.6
+
+2025-04-04 10:17:11 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:17:11 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:17:11 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:17:11 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:17:11 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:17:11 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:17:11 UTC [INFO] Restart count: 8
+2025-04-04 10:17:38 UTC [INFO] Final extracted services: {}
+2025-04-04 10:17:38 UTC [INFO] Restart count: 0
+2025-04-04 10:17:39 UTC [INFO] Message sent: 1743761859.267609
+2025-04-04 10:17:39 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:17:44 UTC [INFO] Processing request:
+### Going to reboot:
+Driver - IG
+Price-aggregator - MMS_INDICES_COMMODITIES
+ECN and MM - USD.1, SB.USD.1
+MM - SB.USD.6
+
+2025-04-04 10:17:44 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ECN and MM', 'MM']
+2025-04-04 10:17:44 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:17:44 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:17:44 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:17:44 UTC [INFO] Extracted details for mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:17:44 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}, 'mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:17:44 UTC [INFO] Restart count: 8
+2025-04-04 10:17:51 UTC [INFO] Final extracted services: {}
+2025-04-04 10:17:51 UTC [INFO] Restart count: 0
+2025-04-04 10:18:03 UTC [INFO] Final extracted services: {}
+2025-04-04 10:18:39 UTC [INFO] Message sent: 1743761919.718839
+2025-04-04 10:18:39 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:18:45 UTC [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES
+ecn: SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:18:45 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn', 'ECN and MM']
+2025-04-04 10:18:45 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:18:45 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:18:45 UTC [INFO] Extracted details for ecn: ['SB.USD.6']
+2025-04-04 10:18:45 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:18:45 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn': {'SB.USD.6'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:18:45 UTC [INFO] Restart count: 7
+2025-04-04 10:19:31 UTC [INFO] Final extracted services: {}
+2025-04-04 10:19:31 UTC [INFO] Restart count: 0
+2025-04-04 10:19:36 UTC [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES
+ecn - SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:19:36 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn', 'ECN and MM']
+2025-04-04 10:19:36 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:19:36 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:19:36 UTC [INFO] Extracted details for ecn: ['SB.USD.6']
+2025-04-04 10:19:36 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:19:36 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn': {'SB.USD.6'}, 'ecn/mm': {'SB.USD.1', 'USD.1'}}
+2025-04-04 10:19:36 UTC [INFO] Restart count: 7
+2025-04-04 10:19:40 UTC [INFO] Message sent: 1743761980.128709
+2025-04-04 10:19:40 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:20:14 UTC [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES
+ecn/mm - SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:20:14 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn/mm', 'ECN and MM']
+2025-04-04 10:20:14 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:20:14 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES']
+2025-04-04 10:20:14 UTC [INFO] Extracted details for ecn/mm: ['SB.USD.6']
+2025-04-04 10:20:14 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:20:14 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES'}, 'ecn/mm': {'SB.USD.1', 'USD.1', 'SB.USD.6'}}
+2025-04-04 10:20:14 UTC [INFO] Restart count: 8
+2025-04-04 10:20:40 UTC [INFO] Message sent: 1743762040.602009
+2025-04-04 10:20:40 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:21:41 UTC [INFO] Message sent: 1743762101.086069
+2025-04-04 10:21:41 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:22:41 UTC [INFO] Message sent: 1743762161.551079
+2025-04-04 10:22:41 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:22:56 UTC [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES + REF
+ecn/mm - SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:22:56 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn/mm', 'ECN and MM']
+2025-04-04 10:22:56 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:22:56 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES + REF']
+2025-04-04 10:22:56 UTC [INFO] Extracted details for ecn/mm: ['SB.USD.6']
+2025-04-04 10:22:56 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:22:56 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES + REF'}, 'ecn/mm': {'SB.USD.1', 'USD.1', 'SB.USD.6'}}
+2025-04-04 10:22:56 UTC [INFO] Restart count: 9
+2025-04-04 10:23:31 UTC [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES, MMS_INDICES_COMMODITIES REF
+ecn/mm - SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:23:31 UTC [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn/mm', 'ECN and MM']
+2025-04-04 10:23:31 UTC [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:23:31 UTC [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES', 'MMS_INDICES_COMMODITIES REF']
+2025-04-04 10:23:31 UTC [INFO] Extracted details for ecn/mm: ['SB.USD.6']
+2025-04-04 10:23:31 UTC [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:23:31 UTC [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES', 'MMS_INDICES_COMMODITIES REF'}, 'ecn/mm': {'SB.USD.1', 'USD.1', 'SB.USD.6'}}
+2025-04-04 10:23:31 UTC [INFO] Restart count: 9
+2025-04-04 10:23:42 UTC [INFO] Message sent: 1743762222.005349
+2025-04-04 10:23:42 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:24:42 UTC [INFO] Message sent: 1743762282.470759
+2025-04-04 10:24:42 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:25:42 UTC [INFO] Message sent: 1743762342.925729
+2025-04-04 10:25:42 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:26:43 UTC [INFO] Message sent: 1743762403.401209
+2025-04-04 10:26:43 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:27:44 UTC [INFO] Message sent: 1743762463.990369
+2025-04-04 10:27:44 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:28:44 UTC [INFO] Message sent: 1743762524.447849
+2025-04-04 10:28:44 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:29:44 UTC [INFO] Message sent: 1743762584.912759
+2025-04-04 10:29:44 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:30:45 UTC [INFO] Message sent: 1743762645.391999
+2025-04-04 10:30:45 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:31:45 UTC [INFO] Message sent: 1743762705.821889
+2025-04-04 10:31:45 UTC [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:32:38 UTC [INFO] Scheduler stopped. Goodbye!
+2025-04-04 10:32:44 UTC.579 [INFO] Scheduler is running. Press CMD+C to exit.
+2025-04-04 10:33:26 UTC.022 [INFO] Final extracted services: {}
+2025-04-04 10:33:26 UTC.022 [INFO] Restart count: 0
+2025-04-04 10:33:28 UTC.643 [INFO] Processing request:
+### Going to reboot :
+Driver: IG
+Price-aggregator: MMS_INDICES_COMMODITIES, MMS_INDICES_COMMODITIES REF
+ecn/mm - SB.USD.6
+ECN and MM: USD.1, SB.USD.1
+
+2025-04-04 10:33:28 UTC.644 [INFO] Found services: ['Driver', 'Price-aggregator', 'ecn/mm', 'ECN and MM']
+2025-04-04 10:33:28 UTC.645 [INFO] Extracted details for market-driver: ['IG']
+2025-04-04 10:33:28 UTC.645 [INFO] Extracted details for price-aggregator: ['MMS_INDICES_COMMODITIES', 'MMS_INDICES_COMMODITIES REF']
+2025-04-04 10:33:28 UTC.646 [INFO] Extracted details for ecn/mm: ['SB.USD.6']
+2025-04-04 10:33:28 UTC.646 [INFO] Extracted details for ecn/mm: ['USD.1', 'SB.USD.1']
+2025-04-04 10:33:28 UTC.646 [INFO] Final extracted services: {'market-driver': {'IG'}, 'price-aggregator': {'MMS_INDICES_COMMODITIES', 'MMS_INDICES_COMMODITIES REF'}, 'ecn/mm': {'SB.USD.1', 'SB.USD.6', 'USD.1'}}
+2025-04-04 10:33:28 UTC.646 [INFO] Restart count: 9
+2025-04-04 10:33:45 UTC.037 [INFO] Message sent: 1743762825.002519
+2025-04-04 10:33:45 UTC.038 [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:34:45 UTC.510 [INFO] Message sent: 1743762885.464149
+2025-04-04 10:34:45 UTC.511 [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:35:45 UTC.944 [INFO] Message sent: 1743762945.907929
+2025-04-04 10:35:45 UTC.944 [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:36:46 UTC.410 [INFO] Message sent: 1743763006.369899
+2025-04-04 10:36:46 UTC.411 [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:37:46 UTC.870 [INFO] Message sent: 1743763066.831569
+2025-04-04 10:37:46 UTC.871 [INFO] Automated ping sent to C08KKABJM6Z.
+2025-04-04 10:37:56 UTC.537 [INFO] Scheduler stopped. Goodbye!
