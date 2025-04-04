@@ -121,12 +121,12 @@ class RestartAnalyzer:
             for match in matches:
                 service_name = match.lower()
 
+                details_pattern = re.compile(fr"{re.escape(match)}\s*[-\:]\s*(.+?)(?:\n|$)", re.IGNORECASE)
+                result = details_pattern.search(request)
+
                 if service_name in ("riskmanager", "risk-manager"):
                     service_dict["risk-manager"] = {'1'}
                     continue
-
-                details_pattern = re.compile(fr"{re.escape(match)}\s*[-\:]\s*(.+?)(?:\n|$)", re.IGNORECASE)
-                result = details_pattern.search(request)
 
                 if result:
                     details = result.group(1).strip()
