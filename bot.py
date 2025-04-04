@@ -46,7 +46,7 @@ logger = Logger()
 # === Regex ===
 RESTART_KEYWORDS = re.compile(r"\b(reboot|restart)\b", re.IGNORECASE)
 SERVICE_KEYWORDS = re.compile(
-    r"\b(ecn/mm|ECN/MM|enc and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|pa|market driver|md|risk manager|manager|MDDRIVER|drivers|driver|RiskManager)\b",
+    r"\b(ecn/mm|ECN/MM|ecn and mm|ECN and MM|ecn|mm|market maker|price-aggregator|price_aggregator|pa|market driver|md|risk manager|manager|MDDRIVER|drivers|driver|RiskManager)\b",
     re.IGNORECASE
 )
 
@@ -142,6 +142,12 @@ class RestartAnalyzer:
                     elif service_name in ('driver', 'mddriver', 'drivers', 'md'):
                         details = re.split(r"\s*[,/|]\s*", details)
                         service_name = 'market-driver'
+                    elif service_name in ('mm', 'MM'):
+                        details = re.split(r"\s*[,/|]\s*", details)
+                        service_name = 'mm'
+                    elif service_name in ('ecn', 'ECN'):
+                        details = re.split(r"\s*[,/|]\s*", details)
+                        service_name = 'ecn'
                     else:
                         details = re.split(r"\s*\|\s*|\s*,\s*|\s*\+\s*", details)
 
@@ -175,7 +181,7 @@ class RestartScheduler:
         self.restart_analyzer = restart_analyzer
 
     def daily_check(self):
-        date = datetime.utcnow().strftime("%Y-%m-%d")
+        date = datetime.now(timezone.utc).strftime("%Y-%m-%d")
         string_date = datetime.now(timezone.utc).strftime("%d-%m-%Y")
         messages = self.slack_client.fetch_messages(CHANNEL_ID, date)
         restart_requests = self.restart_analyzer.extract_restart_requests(messages)
