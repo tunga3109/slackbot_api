@@ -24,7 +24,7 @@ class Logger:
         self.logger = logging.getLogger("RestartBotLogger")
         self.logger.setLevel(logging.INFO)
 
-        formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', '%Y-%m-%d %H:%M:%S UTC')
+        formatter = logging.Formatter('%(asctime)s.%(msecs)03d [%(levelname)s] %(message)s', '%Y-%m-%d %H:%M:%S UTC')
 
         file_handler = logging.FileHandler(log_file)
         file_handler.setFormatter(formatter)
