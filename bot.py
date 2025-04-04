@@ -5,14 +5,17 @@ import json
 import schedule
 import threading
 import logging
+from dotenv import load_dotenv
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack_sdk import WebClient
 
-from config import RESTART_BOT_TOKEN, SOCKET_BOT_TOKEN
+load_dotenv()  # Загружает переменные из .env-файла
 
+RESTART_BOT_TOKEN = os.environ["RESTART_BOT_TOKEN"]
+SOCKET_BOT_TOKEN = os.environ["SOCKET_BOT_TOKEN"]
 
 # === Logger Class ===
 class Logger:
@@ -173,7 +176,7 @@ class RestartScheduler:
 
     def daily_check(self):
         date = datetime.utcnow().strftime("%Y-%m-%d")
-        string_date = datetime.utcnow().strftime("%d-%m-%Y")
+        string_date = datetime.now(timezone.utc).strftime("%d-%m-%Y")
         messages = self.slack_client.fetch_messages(CHANNEL_ID, date)
         restart_requests = self.restart_analyzer.extract_restart_requests(messages)
         services_names = self.restart_analyzer.extract_services(restart_requests)
